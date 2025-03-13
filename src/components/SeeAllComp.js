@@ -1,0 +1,32 @@
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import MyTouchableOpacity from './MyTouchableOpacity';
+import {COLORS, FONTS, SIZES} from '../constants';
+
+export default function SeeAllComp(props) {
+  const {heading, onPressSeeAll, containerStyle} = props;
+
+  return (
+    <View style={[styles.container, containerStyle]}>
+      <Text style={[FONTS.mediumFont16, {color: COLORS.black}]}>{heading}</Text>
+
+      {!props.noSeeAll && (
+        <MyTouchableOpacity onPress={onPressSeeAll}>
+          <Text style={[FONTS.mediumFont12, styles.textStyle]}>See All</Text>
+        </MyTouchableOpacity>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: SIZES.fifteen,
+  },
+  textStyle: {
+    color: COLORS.gray,
+  },
+});
